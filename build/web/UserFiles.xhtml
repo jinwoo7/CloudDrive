@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created by Jinwoo Yom on 2017.02.21 
+Copyright © 2017 Jinwoo Yom. All rights reserved.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- Do not enter tags before the composition line since they are ignored by JSF -->
+
+    <!-- This page is constructed based on the siteTemplate -->
+    <ui:composition template="template/siteTemplate.xhtml">
+
+        <ui:define name="title">
+            <!-- Set the page title -->
+            <h:outputText value="#{accountManager.selected.firstName}'s Files"></h:outputText>
+        </ui:define>
+
+        <!-- Create the content for this page below -->
+        <ui:define name="editableContent">
+
+            <div align="center" style="width:95%">
+                <!--
+                You can place p:growl anywhere on your JSF page since the messages are displayed
+                as an overlay. The life attribute defines how long the message will be displayed 
+                in milliseconds after which it will fade away. 5000 milliseconds = 5 seconds
+                
+                All 'FacesMessage resultMsg' will be displayed here.
+                -->
+                <p:growl id="growl" life="5000" />
+
+                <h:form id="UserFileListForm">
+
+                    <p:panel header="#{accountManager.selected.firstName}&nbsp;#{accountManager.selected.lastName}'s Files" >
+
+                        <p:dataTable id="datalist" value="#{userFileController.items}" var="item"
+                                     selectionMode="single" selection="#{userFileController.selected}"
+                                     paginator="true"
+                                     rowKey="#{item.id}"
+                                     rowIndexVar="rowNumber"
+                                     first="#{userFileController.selectedRowNumber}"
+                                     rows="5"
+                                     rowsPerPageTemplate="5,10,20,30,40,50"
+                                     styleClass="dataTable" >
+
+                            <p:ajax event="rowSelect"   update="uploadButton downloadButton deleteButton displayButton playButton">
+                                #{userFileController.setSelectedRowNumber(rowNumber)};
+                            </p:ajax>
+
+                            <!--
+                            *** To show the previously selected row when the user comes back to this page ***
+                            
+                            Step 1: Include the following above:
+                            
+                                    rowIndexVar="rowNumber" 
+                                    first="#{userFileController.selectedRowNumber}" 
+                                        identifies the row number to show when this page reloads
+                            
+                            Step 2: With <p:ajax event="rowSelect"> above, set the selectedRowNumber 
+                                    instance variable by using the setter method.
+                            
+                                    <p:ajax event="rowSelect">
+                                         #{userFileController.setSelectedRowNumber(rowNumber)};
+                                     </p:ajax>
+                            
+                            Step 3: Declare the instance variable selectedRowNumber and create the
+                                    getter and setter methods for it in UserFileController.java.
+                            -->
+
+                            <p:ajax event="rowUnselect" update="uploadButton downloadButton deleteButton displayButton playButton"/>
+
+                            <!-- FILE ID column -->
+                            <p:column sortBy="#{item.id}" style="width:60px;">
+                                <f:facet name="header">
+                                    <h:outputText value="File Id"/>
+                                </f:facet>
+                                <div align="center"><h:outputText value="#{item.id}"/></div>
+                            </p:column>
+
+                            <!-- IMAGE PREVIEW column -->
+                            <p:column style="width:100px;">
+                                <f:facet name="header">
+                                    <h:outputText value="Image Preview"/>
+                                </f:facet>
+                                <div align="center">
+                                    <h:graphicImage class="previewImage" value="#{userFileController.imageFile(item.id)}" />
+                                </div>
+                            </p:column>
+
+                            <!-- FILENAME column -->
+                            <p:column sortBy="#{item.filename}">
+                                <f:facet name="header">
+                                    <h:outputText value="File Name"/>
+                                </f:facet>
+                                <h:outputText value="#{userFileController.cleanedFilenameForFileId(item.id)}"/>
+                            </p:column>
+
+                            <!-- USER ID column -->
+                            <p:column style="width:60px;">
+                                <f:facet name="header">
+                                    <h:outputText value="User Id"/>
+                                </f:facet>
+                                <div align="center"><h:outputText value="#{item.userId}"/></div>
+                            </p:column>
+
+                            <!-- USER PHOTO column -->
+                            <p:column style="width:100px;">
+                                <f:facet name="header">
+                                    <h:outputText value="User Photo"/>
+                                </f:facet>
+                                <div align="center">
+                                    <h:graphicImage class="previewProfilePhoto" value="#{accountManager.userPhoto()}" />
+                                </div>
+                            </p:column>
+
+                            <!--
+                            The "header" and "footer" facets are defined for the p:dataTable.
+                            See their documentations in PrimeFaces User Guide.
+                            -->
+
+                            <f:facet name="footer">
+
+                                <!-- UPLOAD FILE button -->
+                                <p:commandButton id="uploadButton" value="Upload File" icon="ui-icon-arrowthick-1-n" 
+                                                 update=":growl :UserFileListForm" ajax="true"
+                                                 styleClass="commandButton" action="UploadFile" />                      
+
+                                <!-- DOWNLOAD FILE button -->
+                                <p:commandButton id="downloadButton" value="Download File" ajax="false" 
+                                                 icon="ui-icon-arrowthick-1-s" 
+                                                 styleClass="commandButton" disabled="#{empty userFileController.selected}" >
+
+                                    <p:fileDownload value="#{fileDownloadManager.file}" />
+
+                                </p:commandButton>
+
+                                <!-- **********************************************
+                                Display a Confirmation dialog for the DELETE button
+                                *********************************************** -->
+
+                                <!-- DELETE FILE button -->
+                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Delete File" 
+                                                 styleClass="commandButton" actionListener="#{userFileController.deleteSelectedUserFile()}" 
+                                                 update=":growl :UserFileListForm" ajax="true"
+                                                 disabled="#{empty userFileController.selected}">
+
+                                    <p:confirm header="Confirmation" 
+                                               message="Are you sure you want to permanently delete the selected file from the database?" 
+                                               icon="ui-icon-alert" />
+                                </p:commandButton>
+
+                                <p:confirmDialog id="confirmDialogBox" global="true" showEffect="fade" hideEffect="fade">
+                                    <div align="center">
+                                        <!-- The value of the first button listed below will be shown as 
+                                        highlighted (default action) when displayed -->
+                                        <p:commandButton value="No" type="button" 
+                                                         styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                        &nbsp;
+                                        <p:commandButton value="Yes" type="button" 
+                                                         styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    </div>
+                                </p:confirmDialog>
+                                <!-- **********************************************
+                                End of Display of the DELETE Confirmation dialog 
+                                *********************************************** -->
+
+                                <!-- DISPLAY FILE button -->                              
+                                <p:commandButton id="displayButton" value="Display File" action="DisplayFile" 
+                                                 ajax="false" icon=" ui-icon-document" styleClass="commandButton" 
+                                                 disabled="#{empty userFileController.selected}" />
+
+                                <!-- PLAY MP4 FILE button -->                              
+                                <p:commandButton id="playButton" value="Play MP4 File" action="PlayVideo" 
+                                                 ajax="false" icon="ui-icon-play" styleClass="commandButton" 
+                                                 disabled="#{empty userFileController.selected}" />
+                            </f:facet>
+
+                        </p:dataTable>
+                    </p:panel>
+
+                </h:form>
+            </div>
+
+        </ui:define>
+    </ui:composition>
+    <!-- Do not enter tags after the composition line since they are ignored by JSF -->
+</html>

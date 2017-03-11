@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created by Jinwoo Yom on 2017.02.21 
+Copyright © 2017 Jinwoo Yom. All rights reserved.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!-- Do not enter tags before the composition line since they are ignored by JSF -->
+
+    <!-- This page is constructed based on the siteTemplate -->
+    <ui:composition template="template/siteTemplate.xhtml">
+
+        <ui:define name="title">
+            <!-- Set the page title -->
+            <h:outputText value="Play Video"></h:outputText>
+        </ui:define>
+
+        <!-- Create the content for this page below -->
+        <ui:define name="editableContent">
+
+            <div align="center">
+                <h2>#{userFileController.cleanedFileNameForSelected()}</h2>
+
+                <c:choose>
+                    <c:when test = "${userFileController.isMP4Video()}">
+                        <!-- 
+                        Show MP4 video player with size of 16:9 standard ratio.                 
+                        -->
+                        <video width="512" height="288" preload="auto" controls="controls">
+                            <source src="#{userFileController.selectedFileRelativePath()}" type="video/mp4" />
+                        </video>
+                    </c:when>
+
+                    <c:otherwise>
+                        <!-- Alert User -->
+                        <h:outputText styleClass="alertUser" 
+                                      value="This file is not of type MP4. Only video files of type MP4 can be played!" />
+                        <br />
+                    </c:otherwise>
+                </c:choose>
+
+                <br />
+                <p:button outcome="UserFiles" value="Back" icon="ui-icon-arrowthick-1-w" styleClass="commandButton" />
+            </div>
+
+        </ui:define>
+
+    </ui:composition>
+</html>

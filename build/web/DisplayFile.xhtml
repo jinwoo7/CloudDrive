@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created by Jinwoo Yom on 2017.02.21 
+Copyright © 2017 Jinwoo Yom. All rights reserved.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!-- Do not enter tags before the composition line since they are ignored by JSF -->
+
+    <!-- This page is constructed based on the siteTemplate -->
+    <ui:composition template="template/siteTemplate.xhtml">
+
+        <ui:define name="title">
+            <!-- Set the page title -->
+            <h:outputText value="Display File"></h:outputText>
+        </ui:define>
+
+        <!-- Create the content for this page below -->
+        <ui:define name="editableContent">
+
+            <div align="center">
+                <h2>#{userFileController.cleanedFileNameForSelected()}</h2>
+
+                <c:choose>
+                    <c:when test = "${userFileController.isImage()}">
+                        <!-- Display the image file -->
+                        <h:graphicImage class="displayImage" value="#{userFileController.selectedFileRelativePath()}" />
+                        <br />
+                    </c:when>
+
+                    <c:otherwise>
+                        <c:if test = "${userFileController.isViewable()}">
+                            <!-- Display the viewable file -->
+                            <div>
+                                <iframe src="#{userFileController.selectedFileRelativePath()}" width="600" height="400" scrolling="yes"></iframe>
+                            </div>
+                        </c:if>
+                    </c:otherwise>
+                </c:choose>
+
+                <h:outputText styleClass="alertUser" value="#{userFileController.fileTypeMessage}"/>
+                <br />
+
+                <p:button outcome="UserFiles" value="Back" icon="ui-icon-arrowthick-1-w" styleClass="commandButton" />
+            </div>
+
+        </ui:define>
+
+    </ui:composition>
+</html>

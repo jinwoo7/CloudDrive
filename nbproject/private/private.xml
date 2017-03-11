@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/entityclasses/UserFile.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/sessionbeans/UserFacade.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/template/siteTemplate.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/DisplayFile.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/validators/ZipCodeValidator.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/EditAccount.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/CreateAccount.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/template/contentTemplate.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/managers/AccountManager.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/Bundle.properties</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/PlayVideo.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/UserFiles.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/entityclasses/User.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/ResetPassword.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/template/headerTemplate.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/template/footerTemplate.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/validators/UsernameValidator.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/managers/PhotoFileManager.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/managers/PasswordResetManager.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/UploadFile.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/jsfclasses/UserFileController.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/SecurityQuestion.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/index.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/ChangePhoto.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/managers/LoginManager.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/WEB-INF/glassfish-resources.xml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/managers/FileUploadManager.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/jsfclasses/util/JsfUtil.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/sessionbeans/UserPhotoFacade.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/validators/PasswordValidator.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/managers/FileDownloadManager.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/DeleteAccountDialog.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/sessionbeans/AbstractFacade.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/managers/Constants.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/EnterUsername.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/entityclasses/UserPhoto.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/SignIn.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/sessionbeans/UserFileFacade.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/java/com/mycompany/validators/EmailValidator.java</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/Profile.xhtml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/src/conf/persistence.xml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/WEB-INF/faces-config.xml</file>
+            <file>file:/C:/Users/Jinwoo/Documents/NetBeansProjects/CloudDrive-Yom/web/WEB-INF/web.xml</file>
+        </group>
+    </open-files>
+</project-private>

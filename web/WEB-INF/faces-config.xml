@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <application>
+        <!--
+        The Bundle.properties file under the <default package> defines your UI text,
+        labels, names, and other language-dependent elements in English.
+        To internationalize your app with a different language, this file is recreated
+        under the desired language, e.g., for French, Bundle_fr.properties.
+  
+        The following specifies the properties filename as Bundle.
+        The variable name used to refer to a property is defined as bundle.
+        The variable bundle is used in an EL expression, e.g., #{bundle.Cancel}.
+        This EL expression obtains the text for Cancel in a particular language.
+        -->
+        <resource-bundle>
+            <base-name>/Bundle</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+    </application>
+</faces-config>

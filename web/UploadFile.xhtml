@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created by Jinwoo Yom on 2017.02.21 
+Copyright © 2017 Jinwoo Yom. All rights reserved.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <!-- Do not enter tags before the composition line since they are ignored by JSF -->
+
+    <!-- This page is constructed based on the siteTemplate -->
+    <ui:composition template="template/siteTemplate.xhtml">
+
+        <ui:define name="title">
+            <!-- Set the page title -->
+            <h:outputText value="Upload File(s)"></h:outputText>
+        </ui:define>
+
+        <!-- Create the content for this page below -->
+        <ui:define name="editableContent">
+
+            <!-- 
+            The enctype attribute sets the content type of the data to be submitted to the server.  
+            enctype="multipart/form-data" is required when the form used has a file upload control.
+            -->
+            <h:form enctype="multipart/form-data">
+
+                <div align="center">
+
+                    <h2>Upload One or More Files</h2>
+
+                    <div class="arialTen">
+                        Click Choose to select one or more files or drag one or more files and drop on the white area.
+                    </div>
+                    <br/>
+
+                    <p:fileUpload fileUploadListener="#{fileUploadManager.handleFileUpload}" multiple="true" 
+                                  mode="advanced" sizeLimit="10000000" fileLimit="5"
+                                  dragDropSupport="true" update="messages" />
+                    <br/>
+                    <!-- Allow maximum 10MB file size and no more than 5 files to upload at the same time -->
+
+                    <p:commandButton value="Go Back" icon="ui-icon-arrowthick-1-w" ajax="false"
+                                     styleClass="commandButton" action="UserFiles" /> 
+                    <br/><br/>
+
+                    <p:growl id="messages" showDetail="true" />
+                    <br/>
+                </div>
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
+</html>
